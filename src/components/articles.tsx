@@ -13,7 +13,7 @@ import {NavigationProp, useNavigation} from '@react-navigation/native';
 export default function Articles(props: Article): React.JSX.Element {
   const navigation = useNavigation<NavigationProp<any>>();
 
-  const {publishedAt, urlToImage, title, urlLink} = props;
+  const {publishedAt, urlToImage, title} = props;
 
   const date = new Date(publishedAt);
 
