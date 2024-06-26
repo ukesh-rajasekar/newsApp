@@ -1,16 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
 import Articles from '../components/articles';
-import { topHeadLinesURL } from '../constants';
-import { Article } from '../interfaces/article';
+import {topHeadLinesURL} from '../constants';
+import {Article} from '../interfaces/article';
 
 export default function NewsPage(): React.JSX.Element {
   const [articles, setArticles] = useState<Article[]>([]);
 
   const fetchNews = async (url: string) => {
     try {
-      const resp = await axios.get(`${url}`);
+        const resp = await axios.get(`${url}`);
       const data = resp.data;
       setArticles(data.articles);
     } catch (e) {
@@ -27,14 +27,7 @@ export default function NewsPage(): React.JSX.Element {
       <FlatList
         data={articles}
         keyExtractor={(item, index) => `${item.publishedAt}-${index}`}
-        renderItem={({item}) => (
-          <Articles
-            title={item.title}
-            publishedAt={item.publishedAt}
-            urlToImage={item.urlToImage}
-            urlLink={item.urlLink}
-          />
-        )}
+        renderItem={({item}) => <Articles {...item} />}
       />
     </View>
   );
