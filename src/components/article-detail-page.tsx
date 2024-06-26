@@ -16,7 +16,7 @@ interface ArticleDetailProps {
 }
 
 const ArticleDetailPage: React.FC<ArticleDetailProps> = ({route}) => {
-    console.log(route, 'route here')
+  console.log(route, 'route here');
   const {article} = route.params;
 
   const handlePress = () => {
@@ -25,7 +25,11 @@ const ArticleDetailPage: React.FC<ArticleDetailProps> = ({route}) => {
 
   return (
     <ScrollView style={styles.container}>
-      <Image source={{uri: article.urlToImage}} style={styles.image} />
+      <Image
+        source={{uri: article.urlToImage}}
+        alt={article.title}
+        style={styles.image}
+      />
       <View style={styles.content}>
         <Text style={styles.source}>{article.source.name}</Text>
         <Text style={styles.title}>{article.title}</Text>
@@ -50,6 +54,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: 200,
+    marginBottom: 16,
   },
   content: {
     padding: 16,
@@ -57,21 +62,24 @@ const styles = StyleSheet.create({
   source: {
     fontSize: 14,
     color: '#888',
-    marginBottom: 4,
+    marginBottom: 10,
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 12,
+    lineHeight: 32,
   },
   author: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#555',
-    marginBottom: 8,
+    marginBottom: 10,
+    fontStyle: 'italic',
   },
   description: {
     fontSize: 16,
     marginBottom: 16,
+    lineHeight: 24,
   },
   date: {
     fontSize: 14,
@@ -81,6 +89,7 @@ const styles = StyleSheet.create({
   link: {
     fontSize: 16,
     color: '#1e90ff',
+    textDecorationLine: 'underline',
   },
 });
 
