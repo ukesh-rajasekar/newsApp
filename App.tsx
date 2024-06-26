@@ -15,6 +15,7 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import NewsPage from './src/screens/news-page';
+import NewsStack from './src/stacks/news-stack';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -23,15 +24,7 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return (
-    <SafeAreaView style={{...backgroundStyle, flex: 1}}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <NewsPage />
-    </SafeAreaView>
-  );
+  return <NewsStack />;
 }
 
 const styles = StyleSheet.create({});
